@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "app/src/hooks/use-mobile.jsx", "app/src/components/ui/accordion.jsx", "app/src/api/base44Clent.js"  ],
   "exclude": ["node_modules"]
 }
