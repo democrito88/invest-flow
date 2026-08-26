@@ -1,0 +1,53 @@
+{
+  "name": "Investment",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Nome"
+    },
+    "type": {
+      "type": "string",
+      "title": "Tipo",
+      "enum": [
+        "A\u00e7\u00f5es",
+        "Renda Fixa",
+        "Fundo Imobili\u00e1rio",
+        "Cripto",
+        "Tesouro",
+        "ETF",
+        "Outros"
+      ],
+      "default": "A\u00e7\u00f5es"
+    },
+    "initial_amount": {
+      "type": "number",
+      "title": "Valor Inicial"
+    },
+    "monthly_contribution": {
+      "type": "number",
+      "title": "Aporte Mensal",
+      "default": 0
+    },
+    "annual_return_rate": {
+      "type": "number",
+      "title": "Rentabilidade Anual (%)",
+      "default": 0
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "title": "Data de In\u00edcio"
+    },
+    "notes": {
+      "type": "string",
+      "title": "Observa\u00e7\u00f5es"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "initial_amount",
+    "start_date"
+  ]
+}

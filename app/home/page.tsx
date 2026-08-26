@@ -1,8 +1,18 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import { Plus, LineChart } from "lucide-react";
-import { base44 } from "./../../app/src/api/base44Client";
-import { Button } from "./../../app/src/components/ui/button";
-import { useToast } from "./../../app/src/components/ui/use-toast";
+
+import {
+  type Investment,
+  listInvestments,
+  createInvestment,
+  updateInvestment,
+  deleteInvestment,
+} from "@/entities";
+
+import { Button } from "@/app/src/components/ui/button";
+import { useToast } from "@/app/src/components/ui/use-toast";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,13 +22,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "./../../app/src/components/ui/alert-dialog";
-import SummaryCards from "./../../app/src/components/SummaryCards";
-import PortfolioChart from "./../../app/src/components/PortfolioChart";
-import InvestmentList from "./../../app/src/components/InvestmentList";
-import InvestmentForm from "./../../app/src/components/InvestmentForm";
-import InvestmentDetailDialog from "./../../app/src/components/InvestmentDetailDialog";
-import { type Investment } from "./../../app/src/lib/investmentCalc";
+} from "@/app/src/components/ui/alert-dialog";
+import SummaryCards from "@/app/src/components/SummaryCards";
+import PortfolioChart from "@/app/src/components/PortfolioChart";
+import InvestmentList from "@/app/src/components/InvestmentList";
+import InvestmentForm from "@/app/src/components/InvestmentForm";
+import InvestmentDetailDialog from "@/app/src/components/InvestmentDetailDialog";
 
 export default function Home() {
   const { toast } = useToast();
@@ -34,7 +43,7 @@ export default function Home() {
   const load = async () => {
     setLoading(true);
     try {
-      const list = await base44.entities.Investment.list("-created_date");
+      const list = await listInvestments();
       setInvestments(list as Investment[]);
     } catch {
       toast({ title: "Erro ao carregar investimentos", variant: "destructive" });
@@ -51,10 +60,10 @@ export default function Home() {
     setSaving(true);
     try {
       if (editing?.id) {
-        await base44.entities.Investment.update(editing.id, data);
+        await updateInvestment(editing.id, data);
         toast({ title: "Investimento atualizado" });
       } else {
-        await base44.entities.Investment.create(data);
+        await createInvestment(data);
         toast({ title: "Investimento criado" });
       }
       setFormOpen(false);
@@ -70,7 +79,7 @@ export default function Home() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      await base44.entities.Investment.delete(deleteTarget.id!);
+      await deleteInvestment(deleteTarget.id!);
       toast({ title: "Investimento removido" });
       setDeleteTarget(null);
       await load();
@@ -97,7 +106,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50/60">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Header */}
         <header className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
@@ -112,12 +120,10 @@ export default function Home() {
           </Button>
         </header>
 
-        {/* Summary */}
         <section className="mb-8">
           <SummaryCards investments={investments} />
         </section>
 
-        {/* Portfolio chart */}
         <section className="mb-8 rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm sm:p-6">
           <div className="mb-4 flex items-center gap-2">
             <LineChart className="h-4 w-4 text-slate-400" />
@@ -127,12 +133,12 @@ export default function Home() {
           <PortfolioChart investments={investments} />
         </section>
 
-        {/* List */}
         <section className="rounded-2xl border border-slate-200/70 bg-white p-5 shadow-sm sm:p-6">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-base font-semibold text-slate-800">Meus investimentos</h2>
             <span className="text-xs text-slate-400">{investments.length} ativos</span>
           </div>
+
           {loading ? (
             <div className="flex h-40 items-center justify-center">
               <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-700" />
