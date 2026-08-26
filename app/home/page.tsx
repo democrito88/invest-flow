@@ -9,10 +9,10 @@ import {
   createInvestment,
   updateInvestment,
   deleteInvestment,
-} from "@/entities";
+} from "./../../entities/Investment.jsonc";
 
-import { Button } from "@/app/src/components/ui/button";
-import { useToast } from "@/app/src/components/ui/use-toast";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,12 +22,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "@/app/src/components/ui/alert-dialog";
-import SummaryCards from "@/app/src/components/SummaryCards";
-import PortfolioChart from "@/app/src/components/PortfolioChart";
-import InvestmentList from "@/app/src/components/InvestmentList";
-import InvestmentForm from "@/app/src/components/InvestmentForm";
-import InvestmentDetailDialog from "@/app/src/components/InvestmentDetailDialog";
+} from "@/components/ui/alert-dialog";
+import SummaryCards from "@/components/SummaryCards";
+import PortfolioChart from "@/components/PortfolioChart";
+import InvestmentList from "@/components/InvestmentList";
+import InvestmentForm from "@/components/InvestmentForm";
+import InvestmentDetailDialog from "@/components/InvestmentDetailDialog";
 
 export default function Home() {
   const { toast } = useToast();
