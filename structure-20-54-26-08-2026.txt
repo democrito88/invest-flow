@@ -1,0 +1,171 @@
+.
+├── AGENTS.md
+├── app
+│   ├── api
+│   │   ├── investiments
+│   │   ├── market-data
+│   │   ├── portifolio
+│   │   ├── projection
+│   │   └── transactions
+│   ├── (auth)
+│   │   ├── forgot-password
+│   │   │   └── page.jsx
+│   │   ├── login
+│   │   │   └── page.jsx
+│   │   ├── oauth-consent
+│   │   │   └── page.jsx
+│   │   ├── register
+│   │   │   └── page.jsx
+│   │   └── reset-password
+│   │       └── page.jsx
+│   ├── (dashboard)
+│   │   ├── caterteira
+│   │   │   └── page.tsx
+│   │   ├── configuracoes
+│   │   │   └── page.tsx
+│   │   ├── evolucao
+│   │   │   └── page.tsx
+│   │   ├── home
+│   │   │   └── page.tsx
+│   │   ├── investimentos
+│   │   │   └── page.tsx
+│   │   ├── movimentacoes
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   └── projecoes
+│   │       └── page.tsx
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── hooks
+│   │   ├── use-investments.ts
+│   │   ├── use-mobile.jsx
+│   │   ├── use-portifolio.ts
+│   │   ├── use-projection.ts
+│   │   └── use-size.jsx
+│   ├── layout.tsx
+│   ├── page_old.tsx
+│   └── page.tsx
+├── CLAUDE.md
+├── components
+│   ├── auth
+│   │   ├── AuthLayout.jsx
+│   │   └── UserNotRegisteredError.tsx
+│   ├── general
+│   │   ├── GoogleIcon.jsx
+│   │   ├── PortfolioChart.tsx
+│   │   ├── ProtectedRoute.tsx
+│   │   ├── ScrollToTop.tsx
+│   │   └── SummaryCards.tsx
+│   ├── investments
+│   │   ├── InvestmentChart.tsx
+│   │   ├── InvestmentDetailDialog.tsx
+│   │   ├── InvestmentForm.tsx
+│   │   └── InvestmentList.tsx
+│   └── ui
+│       ├── accordion.jsx
+│       ├── alert-dialog.tsx
+│       ├── alert.jsx
+│       ├── apect-ratio.jsx
+│       ├── avatar.jsx
+│       ├── badge.jsx
+│       ├── breadcrumb.jsx
+│       ├── button.tsx
+│       ├── calendar.jsx
+│       ├── card.jsx
+│       ├── carousel.jsx
+│       ├── chart.jsx
+│       ├── checkbox.jsx
+│       ├── colapsible.jsx
+│       ├── command.jsx
+│       ├── context-menu.jsx
+│       ├── dialog.jsx
+│       ├── drawer.jsx
+│       ├── dropdown-menu.jsx
+│       ├── form.jsx
+│       ├── hover-card.jsx
+│       ├── image-helpers.jsx
+│       ├── image.jsx
+│       ├── input.jsx
+│       ├── input-otp.jsx
+│       ├── label.jsx
+│       ├── menubar.jsx
+│       ├── navigation-menu.jsx
+│       ├── pagination.jsx
+│       ├── popover.jsx
+│       ├── progress.jsx
+│       ├── radio-group.jsx
+│       ├── resizable.jsx
+│       ├── scroll-area.jsx
+│       ├── select.jsx
+│       ├── separator.jsx
+│       ├── sheet.jsx
+│       ├── sidebar.jsx
+│       ├── skeleton.jsx
+│       ├── slider.jsx
+│       ├── sonner.jsx
+│       ├── switch.jsx
+│       ├── table.jsx
+│       ├── tabs.jsx
+│       ├── textarea.jsx
+│       ├── toaster.jsx
+│       ├── toast.jsx
+│       ├── toggle-group.jsx
+│       ├── toggle.jsx
+│       ├── tooltip.jsx
+│       └── use-toast.tsx
+├── components.json
+├── eslint.config.mjs
+├── global.d.ts
+├── jsconfig.json
+├── lib
+│   ├── app-params.js
+│   ├── AuthContext.jsx
+│   ├── authReturnTo.js
+│   ├── calculations
+│   │   ├── compound-interest.ts
+│   │   ├── performance.ts
+│   │   ├── portfolio.ts
+│   │   ├── projections.ts
+│   │   └── return.ts
+│   ├── investmentCalc.ts
+│   ├── PageNotFound.jsx
+│   ├── query-client.js
+│   └── utils.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── prisma
+│   ├── migrations
+│   └── schema.prisma
+├── public
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── README.md
+├── server
+│   ├── queries
+│   │   ├── dashboard.query.ts
+│   │   └── portfolio.query.ts
+│   ├── repositories
+│   │   ├── investiment.repository.ts
+│   │   ├── portfolio.repository.ts
+│   │   └── transaction.repository.ts
+│   └── services
+│       ├── investiment.service.ts
+│       ├── portifolio.service.ts
+│       └── projection.service.ts
+├── structure-20-54-26-08-2026.txt
+├── tailwind.config.js
+├── tree
+├── tsconfig.json
+├── types
+│   ├── investment.ts
+│   ├── portfolio.ts
+│   ├── projection.ts
+│   ├── transaction.ts
+│   └── user.ts
+└── vite.config.js
+
+38 directories, 131 files

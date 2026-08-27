@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  INDIVIDUAL
+  COMPANY
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum InvestmentType {
+  STOCK
+  ETF
+  FUND
+  BOND
+  TREASURY
+  CRYPTO
+  REAL_ESTATE
+  SAVINGS
+  OTHER
+}
+
+enum TransactionType {
+  BUY
+  SELL
+  DEPOSIT
+  WITHDRAWAL
+  DIVIDEND
+  INTEREST
+  FEE
+  OTHER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  type      UserType @default(INDIVIDUAL)
+  email     String   @unique
+  password  String
+  role      UserRole @default(USER)
+
+  investments Investment[]
+  portfolios  Portfolio[]
+  projections Projection[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Investment {
+  id                  String   @id @default(cuid())
+  userId              String
+
+  name                String
+  type                InvestmentType
+  initialAmount       Decimal  @db.Decimal(15, 2)
+  monthlyContribution Decimal  @db.Decimal(15, 2)
+  annualReturnRate    Decimal  @db.Decimal(8, 4)
+  startDate           DateTime
+  notes               String?
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  portfolioId String?
+  portfolio   Portfolio? @relation(fields: [portfolioId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([portfolioId])
+  @@map("investments")
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  userId      String
+
+  name        String
+  description String?
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  investments Investment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("portfolios")
+}
+
+model Projection {
+  id       String @id @default(cuid())
+  userId   String
+
+  name     String
+  startDate DateTime
+  endDate   DateTime
+
+  initialAmount       Decimal @db.Decimal(15, 2)
+  monthlyContribution Decimal @db.Decimal(15, 2)
+  annualReturnRate    Decimal @db.Decimal(8, 4)
+
+  resultData Json?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("projections")
+}
+
+model Transaction {
+  id           String   @id @default(cuid())
+  investmentId String
+
+  type         TransactionType
+  amount       Decimal @db.Decimal(15, 2)
+  quantity     Decimal? @db.Decimal(20, 8)
+  price        Decimal? @db.Decimal(15, 8)
+  date         DateTime
+  notes        String?
+
+  investment Investment @relation(fields: [investmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([investmentId])
+  @@index([date])
+  @@map("transactions")
+}
