@@ -1,5 +1,5 @@
 import { Wallet, TrendingUp, TrendingDown, PiggyBank } from "lucide-react";
-import { computeSummary, formatBRL, formatPct, type Investment } from "lib/investmentCalc";
+import { computeSummary, formatBRL, formatPct, type Investment } from "@/lib/calculations/investment-calc";
 
 interface Props {
   investments: Investment[];

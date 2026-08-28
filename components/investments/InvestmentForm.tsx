@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { type Investment } from "lib/investmentCalc";
+import { type Investment } from "@/lib/calculations/investment-calc";
 
 const TYPES = ["Ações", "Renda Fixa", "Fundo Imobiliário", "Cripto", "Tesouro", "ETF", "Outros"];
 

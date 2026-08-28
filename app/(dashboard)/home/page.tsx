@@ -24,7 +24,7 @@ import {
   AlertDialogTitle,
 } from "components/ui/alert-dialog";
 import SummaryCards from "@/components/general/SummaryCards";
-import PortfolioChart from "@/components/general/PortfolioChart";
+import PortfolioChart from "@/components/portfolio/PortfolioChart";
 import InvestmentList from "@/components/investments/InvestmentList";
 import InvestmentForm from "@/components/investments/InvestmentForm";
 import InvestmentDetailDialog from "@/components/investments/InvestmentDetailDialog";

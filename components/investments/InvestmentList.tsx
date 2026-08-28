@@ -7,7 +7,7 @@ import {
   monthsBetween,
   colorFor,
   type Investment,
-} from "lib/investmentCalc";
+} from "@/lib/calculations/investment-calc";
 
 interface Props {
   investments: Investment[];

@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { buildSeries, formatBRL, formatBRLPrecise, todayLabel, type Investment } from "lib/investmentCalc";
+import { buildSeries, formatBRL, formatBRLPrecise, todayLabel, type Investment } from "@/lib/calculations/investment-calc";
 
 interface Props {
   investment: Investment;
